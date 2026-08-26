@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ficha de Alumno - Certificado</title>
+    <title>Ficha de Alumno - Escuela Exterior</title>
 
     <style>
+
         * {
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: white;
+            background: #ffffff;
             color: #202124;
         }
 
-        /* ENCABEZADO */
+
+        /* =====================================================
+           ENCABEZADO
+        ===================================================== */
+
         .encabezado {
-            background: #171717;
             width: 100%;
-            padding: 22px 28px;
+            min-height: 145px;
+            padding: 20px 30px;
+
+            background: #171717;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 145px;
         }
 
         .logo {
             width: 230px;
             height: auto;
+            display: block;
             object-fit: contain;
         }
 
@@ -40,34 +53,61 @@
         }
 
         .encabezado-derecha p {
-            color: white;
-            font-size: 25px;
             margin: 0 0 18px;
+
+            color: #ffffff;
+
+            font-size: 25px;
+            font-weight: 400;
         }
 
         .boton-aula {
             display: inline-block;
+
+            padding: 15px 42px;
+
             background: #ffbf00;
-            color: #111;
+            color: #111111;
+
+            border-radius: 10px;
+
             font-size: 23px;
             font-weight: bold;
-            padding: 15px 42px;
-            border-radius: 10px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition: 0.2s;
         }
 
-        /* TITULO NEGRO */
+        .boton-aula:hover {
+            transform: scale(1.03);
+        }
+
+
+        /* =====================================================
+           BANNER FICHA DE ALUMNO
+        ===================================================== */
+
         .banner {
-            background: #000;
             width: 100%;
+
             padding: 38px 20px;
+
+            background: #000000;
+
             text-align: center;
         }
 
         .banner h1 {
             margin: 0;
-            color: white;
+
+            color: #ffffff;
+
             font-size: 48px;
             font-weight: 900;
+
             letter-spacing: -1px;
         }
 
@@ -75,107 +115,185 @@
             color: #f2b400;
         }
 
-        /* CONTENIDO */
+
+        /* =====================================================
+           CONTENIDO PRINCIPAL
+        ===================================================== */
+
         .contenido {
+            width: 100%;
             max-width: 900px;
+
             margin: 0 auto;
-            padding: 65px 35px 80px;
+
+            padding: 60px 35px 80px;
+
             text-align: center;
         }
 
+
+        /* =====================================================
+           ALUMNO
+        ===================================================== */
+
         .titulo-seccion {
+            margin: 0 0 25px;
+
             font-size: 43px;
             font-weight: 800;
-            margin: 0 0 25px;
         }
 
         .nombre {
-            font-size: 34px;
             margin-bottom: 55px;
+
+            font-size: 34px;
+            font-weight: 400;
         }
 
+
+        /* =====================================================
+           CURSO
+        ===================================================== */
+
         .subtitulo {
+            margin: 0 0 25px;
+
             font-size: 39px;
             font-weight: 800;
-            margin: 0 0 25px;
         }
 
         .curso {
-            font-size: 30px;
             margin-bottom: 45px;
+
+            font-size: 30px;
+            font-weight: 400;
         }
 
-        /* FOTO / ESPACIO */
-        .sin-foto {
-            width: 330px;
-            height: 330px;
-            margin: 0 auto 45px;
-            border: 7px solid #eab400;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fafafa;
-            color: #777;
-            font-size: 20px;
-        }
 
-        /* DATOS */
+        /* =====================================================
+           DATOS DEL ALUMNO
+        ===================================================== */
+
         .datos {
-            max-width: 650px;
+            width: 100%;
+            max-width: 700px;
+
             margin: 0 auto;
+
             text-align: left;
         }
 
         .dato {
             display: flex;
+
             align-items: center;
-            margin-bottom: 28px;
+
             gap: 25px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #e2e2e2;
         }
+
+        .dato:first-child {
+            border-top: 2px solid #eab400;
+        }
+
+        .dato:last-child {
+            border-bottom: 2px solid #eab400;
+        }
+
+
+        /* =====================================================
+           ICONOS
+        ===================================================== */
 
         .icono {
             width: 105px;
             height: 105px;
+
             flex-shrink: 0;
-            background: #171717;
-            color: white;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 45px;
+
+            background: #171717;
+
+            overflow: hidden;
+        }
+
+        .icono img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           TEXTO DE LOS DATOS
+        ===================================================== */
+
+        .dato-texto {
+            min-width: 0;
         }
 
         .dato-texto strong {
             display: block;
-            font-size: 27px;
+
             margin-bottom: 8px;
+
+            font-size: 27px;
+            font-weight: 800;
         }
 
         .dato-texto span {
+            display: block;
+
             font-size: 23px;
+            font-weight: 400;
+
+            word-break: break-word;
         }
 
         .dni {
             color: #0879df;
         }
 
-        /* NOTAS */
+
+        /* =====================================================
+           NOTAS
+        ===================================================== */
+
         .notas {
             margin-top: 60px;
         }
 
         .notas h2 {
+            margin: 0 0 40px;
+
             color: #e9ad00;
+
             font-size: 38px;
-            margin-bottom: 45px;
+            font-weight: 800;
         }
 
         .nota {
+            width: 100%;
+
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
-            margin: 30px 0;
-            padding: 0 25px;
+            justify-content: space-between;
+
+            margin: 20px 0;
+
+            padding: 15px 25px;
+
+            border-bottom: 1px solid #eeeeee;
         }
 
         .nota-nombre {
@@ -183,104 +301,217 @@
             font-weight: 800;
         }
 
+
+        /* =====================================================
+           CÍRCULOS 100%
+        ===================================================== */
+
         .circulo {
-            width: 125px;
-            height: 125px;
+            width: 105px;
+            height: 105px;
+
+            flex-shrink: 0;
+
             border-radius: 50%;
-            background: conic-gradient(
-                #efad00 0deg 288deg,
-                #111 288deg 360deg
-            );
+
+            background: #efad00;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             position: relative;
         }
 
         .circulo::after {
             content: "";
-            width: 88px;
-            height: 88px;
-            background: white;
-            border-radius: 50%;
+
             position: absolute;
+
+            width: 74px;
+            height: 74px;
+
+            background: #ffffff;
+
+            border-radius: 50%;
         }
 
         .porcentaje {
             position: relative;
             z-index: 2;
-            font-size: 25px;
+
+            font-size: 23px;
             font-weight: bold;
+
+            color: #202124;
         }
 
-        /* CERTIFICADO */
+
+        /* =====================================================
+           CERTIFICADO
+        ===================================================== */
+
         .certificado {
-            margin-top: 60px;
             width: 100%;
             height: 400px;
-            border: 2px solid #999;
-            background: white;
+
+            margin-top: 55px;
+
+            border: 2px solid #999999;
+
+            background: #ffffff;
         }
+
+
+        /* =====================================================
+           BOTÓN DESCARGAR
+        ===================================================== */
 
         .descargar {
             display: inline-block;
+
             margin-top: 25px;
-            background: #ffbf00;
-            color: #111;
-            text-decoration: none;
-            font-size: 24px;
+
             padding: 18px 40px;
+
+            background: #ffbf00;
+            color: #111111;
+
             border-radius: 8px;
+
+            font-size: 24px;
+            font-weight: 500;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
         }
 
-        /* CONTACTO */
+        .descargar:hover {
+            background: #eeb000;
+            transform: scale(1.02);
+        }
+
+
+        /* =====================================================
+           CONTACTO
+        ===================================================== */
+
         .contacto {
-            background: #000;
-            color: white;
-            text-align: center;
+            width: 100%;
+
             padding: 65px 25px 80px;
+
+            background: #000000;
+
+            color: #ffffff;
+
+            text-align: center;
         }
 
         .contacto h2 {
-            font-size: 55px;
             margin: 0 0 25px;
+
+            font-size: 55px;
+            font-weight: 900;
         }
 
         .contacto p {
+            margin: 0 0 40px;
+
             font-size: 23px;
-            margin-bottom: 40px;
         }
 
         .formulario {
+            width: 100%;
             max-width: 600px;
-            margin: auto;
+
+            margin: 0 auto;
         }
 
         .formulario input {
             width: 100%;
-            padding: 22px;
+
             margin-bottom: 22px;
+
+            padding: 22px;
+
             border: none;
             border-radius: 8px;
+
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 20px;
+
+            outline: none;
         }
 
         .enviar {
-            background: #75c943;
-            color: white;
+            padding: 18px 60px;
+
             border: none;
             border-radius: 35px;
-            padding: 18px 60px;
+
+            background: #75c943;
+            color: #ffffff;
+
             font-size: 25px;
             font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
         }
 
-        /* CELULAR */
+        .enviar:hover {
+            transform: scale(1.03);
+        }
+
+
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+        .whatsapp {
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #25D366;
+
+            border-radius: 50%;
+
+            color: #ffffff;
+
+            font-size: 32px;
+
+            text-decoration: none;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+
+            z-index: 999;
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
         @media (max-width: 600px) {
 
             .encabezado {
-                padding: 18px 15px;
                 min-height: 120px;
+
+                padding: 18px 15px;
             }
 
             .logo {
@@ -288,14 +519,17 @@
             }
 
             .encabezado-derecha p {
-                font-size: 15px;
                 margin-bottom: 10px;
+
+                font-size: 15px;
             }
 
             .boton-aula {
-                font-size: 15px;
                 padding: 11px 20px;
+
+                font-size: 15px;
             }
+
 
             .banner {
                 padding: 32px 10px;
@@ -305,18 +539,22 @@
                 font-size: 34px;
             }
 
+
             .contenido {
                 padding: 55px 20px 70px;
             }
+
 
             .titulo-seccion {
                 font-size: 34px;
             }
 
             .nombre {
-                font-size: 27px;
                 margin-bottom: 45px;
+
+                font-size: 27px;
             }
+
 
             .subtitulo {
                 font-size: 31px;
@@ -324,22 +562,27 @@
 
             .curso {
                 font-size: 24px;
+
+                margin-bottom: 35px;
             }
 
-            .sin-foto {
-                width: 270px;
-                height: 270px;
+
+            .datos {
+                max-width: 100%;
             }
 
             .dato {
                 gap: 18px;
+
+                padding: 13px 0;
             }
+
 
             .icono {
                 width: 80px;
                 height: 80px;
-                font-size: 35px;
             }
+
 
             .dato-texto strong {
                 font-size: 22px;
@@ -349,34 +592,56 @@
                 font-size: 18px;
             }
 
+
+            .notas {
+                margin-top: 50px;
+            }
+
             .notas h2 {
+                margin-bottom: 30px;
+
                 font-size: 30px;
             }
 
+
             .nota {
-                padding: 0 5px;
+                padding: 12px 5px;
             }
 
             .nota-nombre {
                 font-size: 24px;
             }
 
+
             .circulo {
-                width: 95px;
-                height: 95px;
+                width: 88px;
+                height: 88px;
             }
 
             .circulo::after {
-                width: 67px;
-                height: 67px;
+                width: 62px;
+                height: 62px;
             }
 
             .porcentaje {
-                font-size: 20px;
+                font-size: 19px;
             }
+
 
             .certificado {
                 height: 300px;
+            }
+
+
+            .descargar {
+                padding: 16px 28px;
+
+                font-size: 20px;
+            }
+
+
+            .contacto {
+                padding: 55px 20px 70px;
             }
 
             .contacto h2 {
@@ -386,13 +651,43 @@
             .contacto p {
                 font-size: 18px;
             }
+
+
+            .formulario input {
+                padding: 18px;
+
+                font-size: 18px;
+            }
+
+            .enviar {
+                padding: 16px 50px;
+
+                font-size: 22px;
+            }
+
+
+            .whatsapp {
+                width: 58px;
+                height: 58px;
+
+                right: 15px;
+                bottom: 15px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- ENCABEZADO -->
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
     <header class="encabezado">
 
         <img
@@ -402,92 +697,178 @@
         >
 
         <div class="encabezado-derecha">
-            <p>Accede a tu aula virtual</p>
-            <div class="boton-aula">
+
+            <p>
+                Accede a tu aula virtual
+            </p>
+
+            <a
+                href="#"
+                class="boton-aula"
+            >
                 Ingresa Aquí
-            </div>
+            </a>
+
         </div>
 
     </header>
 
 
-    <!-- TITULO -->
+
+    <!-- =====================================================
+         BANNER
+    ====================================================== -->
+
     <section class="banner">
+
         <h1>
             FICHA DE <span>ALUMNO</span>
         </h1>
+
     </section>
 
 
-    <!-- INFORMACIÓN -->
+
+    <!-- =====================================================
+         CONTENIDO
+    ====================================================== -->
+
     <main class="contenido">
+
+
+        <!-- ALUMNO -->
 
         <h2 class="titulo-seccion">
             ALUMNO:
         </h2>
 
         <div class="nombre">
-            José Gabriel Arce Crovetto
+            Nombre del alumno
         </div>
 
+
+
+        <!-- CURSO -->
 
         <h2 class="subtitulo">
             CERTIFICADO EN:
         </h2>
 
         <div class="curso">
-            Infomatica Avanzada
+            Nombre del curso
         </div>
 
 
-        <!-- ESPACIO PARA FOTO -->
-        <div class="sin-foto">
-            Sin fotografía
-        </div>
 
+        <!-- =================================================
+             DATOS
+        ================================================== -->
 
-        <!-- DATOS -->
         <section class="datos">
 
+
+            <!-- CORREO -->
+
             <div class="dato">
-                <div class="icono">✉</div>
+
+                <div class="icono">
+
+                    <img
+                        src="bnn-correo.png"
+                        alt="Correo"
+                    >
+
+                </div>
 
                 <div class="dato-texto">
-                    <strong>Correo:</strong>
-                    <span>arcecrovettogabriel@gmail.com</span>
+
+                    <strong>
+                        Correo:
+                    </strong>
+
+                    <span>
+                        correo@ejemplo.com
+                    </span>
+
                 </div>
+
             </div>
 
 
+
+            <!-- DIRECCIÓN -->
+
             <div class="dato">
-                <div class="icono">⌖</div>
+
+                <div class="icono">
+
+                    <img
+                        src="bnn-direccion.png"
+                        alt="Dirección"
+                    >
+
+                </div>
 
                 <div class="dato-texto">
-                    <strong>Dirección:</strong>
-                    <span>Dirección registrada</span>
+
+                    <strong>
+                        Dirección:
+                    </strong>
+
+                    <span>
+                        Dirección registrada
+                    </span>
+
                 </div>
+
             </div>
 
 
+
+            <!-- DNI -->
+
             <div class="dato">
-                <div class="icono">▣</div>
+
+                <div class="icono">
+
+                    <img
+                        src="bnn-dni.png"
+                        alt="DNI"
+                    >
+
+                </div>
 
                 <div class="dato-texto">
-                    <strong>DNI</strong>
-                    <span class="dni">76432995</span>
+
+                    <strong>
+                        DNI
+                    </strong>
+
+                    <span class="dni">
+                        00000000
+                    </span>
+
                 </div>
+
             </div>
+
 
         </section>
 
 
-        <!-- NOTAS -->
+
+        <!-- =================================================
+             NOTAS
+        ================================================== -->
+
         <section class="notas">
 
             <h2>
                 NOTAS DEL CURSO:
             </h2>
 
+
+            <!-- QUIZ 1 -->
 
             <div class="nota">
 
@@ -496,11 +877,18 @@
                 </div>
 
                 <div class="circulo">
-                    <div class="porcentaje">80%</div>
+
+                    <div class="porcentaje">
+                        100%
+                    </div>
+
                 </div>
 
             </div>
 
+
+
+            <!-- QUIZ 2 -->
 
             <div class="nota">
 
@@ -509,11 +897,18 @@
                 </div>
 
                 <div class="circulo">
-                    <div class="porcentaje">80%</div>
+
+                    <div class="porcentaje">
+                        100%
+                    </div>
+
                 </div>
 
             </div>
 
+
+
+            <!-- QUIZ 3 -->
 
             <div class="nota">
 
@@ -522,25 +917,50 @@
                 </div>
 
                 <div class="circulo">
-                    <div class="porcentaje">80%</div>
+
+                    <div class="porcentaje">
+                        100%
+                    </div>
+
                 </div>
 
             </div>
 
+
         </section>
 
 
-        <!-- CERTIFICADO -->
-        <div class="certificado"></div>
 
-        <a href="#" class="descargar">
+        <!-- =================================================
+             ESPACIO CERTIFICADO
+        ================================================== -->
+
+        <div class="certificado">
+        </div>
+
+
+
+        <!-- =================================================
+             DESCARGAR
+        ================================================== -->
+
+        <a
+            href="#"
+            class="descargar"
+            id="botonDescargar"
+        >
             Descargar Certificado
         </a>
+
 
     </main>
 
 
-    <!-- CONTACTO -->
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+
     <section class="contacto">
 
         <h2>
@@ -551,7 +971,11 @@
             administracion@camaradecomercioexterior.com
         </p>
 
-        <div class="formulario">
+
+        <form
+            class="formulario"
+            onsubmit="return false;"
+        >
 
             <input
                 type="text"
@@ -563,13 +987,62 @@
                 placeholder="Correo *"
             >
 
-            <button class="enviar">
+            <button
+                type="submit"
+                class="enviar"
+            >
                 Enviar
             </button>
 
-        </div>
+        </form>
 
     </section>
 
+
+
+    <!-- =====================================================
+         WHATSAPP
+    ====================================================== -->
+
+    <a
+        href="#"
+        class="whatsapp"
+        aria-label="WhatsApp"
+    >
+        ☎
+    </a>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /*
+         * BOTÓN DESCARGAR CERTIFICADO
+         *
+         * Por ahora no ponemos una dirección de descarga
+         * porque todavía no hemos subido el diploma PDF.
+         *
+         * Cuando subamos el PDF, aquí pondremos su nombre.
+         */
+
+        document
+            .getElementById("botonDescargar")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                alert("El certificado estará disponible para descargar próximamente.");
+
+            });
+
+
+    </script>
+
+
 </body>
+
 </html>
