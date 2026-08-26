@@ -4,121 +4,572 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Verificación de Certificado</title>
+    <title>Ficha de Alumno - Certificado</title>
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-        }
-
-        .contenedor {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-            padding: 40px 25px;
+        * {
             box-sizing: border-box;
         }
 
-        .logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo h1 {
+        body {
             margin: 0;
-            font-size: 32px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: white;
+            color: #202124;
         }
 
-        .titulo {
-            text-align: center;
-            margin-bottom: 35px;
+        /* ENCABEZADO */
+        .encabezado {
+            background: #171717;
+            width: 100%;
+            padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 145px;
         }
 
-        .titulo h2 {
-            margin-bottom: 10px;
+        .logo {
+            width: 230px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .valido {
-            display: inline-block;
-            background: #2e9d50;
+        .encabezado-derecha {
+            text-align: right;
+        }
+
+        .encabezado-derecha p {
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-weight: bold;
+            font-size: 25px;
+            margin: 0 0 18px;
         }
 
-        .datos {
-            border: 1px solid #ddd;
+        .boton-aula {
+            display: inline-block;
+            background: #ffbf00;
+            color: #111;
+            font-size: 23px;
+            font-weight: bold;
+            padding: 15px 42px;
             border-radius: 10px;
-            padding: 25px;
+        }
+
+        /* TITULO NEGRO */
+        .banner {
+            background: #000;
+            width: 100%;
+            padding: 38px 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            margin: 0;
+            color: white;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .banner h1 span {
+            color: #f2b400;
+        }
+
+        /* CONTENIDO */
+        .contenido {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 65px 35px 80px;
+            text-align: center;
+        }
+
+        .titulo-seccion {
+            font-size: 43px;
+            font-weight: 800;
+            margin: 0 0 25px;
+        }
+
+        .nombre {
+            font-size: 34px;
+            margin-bottom: 55px;
+        }
+
+        .subtitulo {
+            font-size: 39px;
+            font-weight: 800;
+            margin: 0 0 25px;
+        }
+
+        .curso {
+            font-size: 30px;
+            margin-bottom: 45px;
+        }
+
+        /* FOTO / ESPACIO */
+        .sin-foto {
+            width: 330px;
+            height: 330px;
+            margin: 0 auto 45px;
+            border: 7px solid #eab400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            color: #777;
+            font-size: 20px;
+        }
+
+        /* DATOS */
+        .datos {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         .dato {
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 28px;
+            gap: 25px;
         }
 
-        .dato strong {
+        .icono {
+            width: 105px;
+            height: 105px;
+            flex-shrink: 0;
+            background: #171717;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+        }
+
+        .dato-texto strong {
             display: block;
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 5px;
+            font-size: 27px;
+            margin-bottom: 8px;
         }
 
-        .dato span {
+        .dato-texto span {
+            font-size: 23px;
+        }
+
+        .dni {
+            color: #0879df;
+        }
+
+        /* NOTAS */
+        .notas {
+            margin-top: 60px;
+        }
+
+        .notas h2 {
+            color: #e9ad00;
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .nota {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 0 25px;
+        }
+
+        .nota-nombre {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .circulo {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #efad00 0deg 288deg,
+                #111 288deg 360deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .circulo::after {
+            content: "";
+            width: 88px;
+            height: 88px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .porcentaje {
+            position: relative;
+            z-index: 2;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* CERTIFICADO */
+        .certificado {
+            margin-top: 60px;
+            width: 100%;
+            height: 400px;
+            border: 2px solid #999;
+            background: white;
+        }
+
+        .descargar {
+            display: inline-block;
+            margin-top: 25px;
+            background: #ffbf00;
+            color: #111;
+            text-decoration: none;
+            font-size: 24px;
+            padding: 18px 40px;
+            border-radius: 8px;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 65px 25px 80px;
+        }
+
+        .contacto h2 {
+            font-size: 55px;
+            margin: 0 0 25px;
+        }
+
+        .contacto p {
+            font-size: 23px;
+            margin-bottom: 40px;
+        }
+
+        .formulario {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .formulario input {
+            width: 100%;
+            padding: 22px;
+            margin-bottom: 22px;
+            border: none;
+            border-radius: 8px;
             font-size: 20px;
+        }
+
+        .enviar {
+            background: #75c943;
+            color: white;
+            border: none;
+            border-radius: 35px;
+            padding: 18px 60px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* CELULAR */
+        @media (max-width: 600px) {
+
+            .encabezado {
+                padding: 18px 15px;
+                min-height: 120px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            .encabezado-derecha p {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .boton-aula {
+                font-size: 15px;
+                padding: 11px 20px;
+            }
+
+            .banner {
+                padding: 32px 10px;
+            }
+
+            .banner h1 {
+                font-size: 34px;
+            }
+
+            .contenido {
+                padding: 55px 20px 70px;
+            }
+
+            .titulo-seccion {
+                font-size: 34px;
+            }
+
+            .nombre {
+                font-size: 27px;
+                margin-bottom: 45px;
+            }
+
+            .subtitulo {
+                font-size: 31px;
+            }
+
+            .curso {
+                font-size: 24px;
+            }
+
+            .sin-foto {
+                width: 270px;
+                height: 270px;
+            }
+
+            .dato {
+                gap: 18px;
+            }
+
+            .icono {
+                width: 80px;
+                height: 80px;
+                font-size: 35px;
+            }
+
+            .dato-texto strong {
+                font-size: 22px;
+            }
+
+            .dato-texto span {
+                font-size: 18px;
+            }
+
+            .notas h2 {
+                font-size: 30px;
+            }
+
+            .nota {
+                padding: 0 5px;
+            }
+
+            .nota-nombre {
+                font-size: 24px;
+            }
+
+            .circulo {
+                width: 95px;
+                height: 95px;
+            }
+
+            .circulo::after {
+                width: 67px;
+                height: 67px;
+            }
+
+            .porcentaje {
+                font-size: 20px;
+            }
+
+            .certificado {
+                height: 300px;
+            }
+
+            .contacto h2 {
+                font-size: 42px;
+            }
+
+            .contacto p {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="contenedor">
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
 
-        <div class="logo">
-            <h1>ESCUELA EXTERIOR</h1>
-        </div>
+        <img
+            src="MagicEraser_260826_080832.png"
+            alt="Cámara de Comercio Exterior"
+            class="logo"
+        >
 
-        <div class="titulo">
-            <h2>VERIFICACIÓN DE CERTIFICADO</h2>
-            <div class="valido">
-                ✓ CERTIFICADO VÁLIDO
+        <div class="encabezado-derecha">
+            <p>Accede a tu aula virtual</p>
+            <div class="boton-aula">
+                Ingresa Aquí
             </div>
         </div>
 
-        <div class="datos">
+    </header>
+
+
+    <!-- TITULO -->
+    <section class="banner">
+        <h1>
+            FICHA DE <span>ALUMNO</span>
+        </h1>
+    </section>
+
+
+    <!-- INFORMACIÓN -->
+    <main class="contenido">
+
+        <h2 class="titulo-seccion">
+            ALUMNO:
+        </h2>
+
+        <div class="nombre">
+            Nombre del alumno
+        </div>
+
+
+        <h2 class="subtitulo">
+            CERTIFICADO EN:
+        </h2>
+
+        <div class="curso">
+            Nombre del curso
+        </div>
+
+
+        <!-- ESPACIO PARA FOTO -->
+        <div class="sin-foto">
+            Sin fotografía
+        </div>
+
+
+        <!-- DATOS -->
+        <section class="datos">
 
             <div class="dato">
-                <strong>ALUMNO</strong>
-                <span>Nombre del alumno</span>
+                <div class="icono">✉</div>
+
+                <div class="dato-texto">
+                    <strong>Correo:</strong>
+                    <span>correo@ejemplo.com</span>
+                </div>
             </div>
 
-            <div class="dato">
-                <strong>CERTIFICADO EN</strong>
-                <span>Nombre del curso</span>
-            </div>
 
             <div class="dato">
-                <strong>CÓDIGO DE VERIFICACIÓN</strong>
-                <span>CE-000001</span>
+                <div class="icono">⌖</div>
+
+                <div class="dato-texto">
+                    <strong>Dirección:</strong>
+                    <span>Dirección registrada</span>
+                </div>
             </div>
 
-            <div class="dato">
-                <strong>FECHA DE EMISIÓN</strong>
-                <span>26 de agosto de 2026</span>
-            </div>
 
             <div class="dato">
-                <strong>ESTADO</strong>
-                <span>VIGENTE</span>
+                <div class="icono">▣</div>
+
+                <div class="dato-texto">
+                    <strong>DNI</strong>
+                    <span class="dni">00000000</span>
+                </div>
             </div>
+
+        </section>
+
+
+        <!-- NOTAS -->
+        <section class="notas">
+
+            <h2>
+                NOTAS DEL CURSO:
+            </h2>
+
+
+            <div class="nota">
+
+                <div class="nota-nombre">
+                    Quiz 1
+                </div>
+
+                <div class="circulo">
+                    <div class="porcentaje">80%</div>
+                </div>
+
+            </div>
+
+
+            <div class="nota">
+
+                <div class="nota-nombre">
+                    Quiz 2
+                </div>
+
+                <div class="circulo">
+                    <div class="porcentaje">80%</div>
+                </div>
+
+            </div>
+
+
+            <div class="nota">
+
+                <div class="nota-nombre">
+                    Quiz 3
+                </div>
+
+                <div class="circulo">
+                    <div class="porcentaje">80%</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CERTIFICADO -->
+        <div class="certificado"></div>
+
+        <a href="#" class="descargar">
+            Descargar Certificado
+        </a>
+
+    </main>
+
+
+    <!-- CONTACTO -->
+    <section class="contacto">
+
+        <h2>
+            CONTÁCTANOS
+        </h2>
+
+        <p>
+            administracion@cam aradecomercioexterior.com
+        </p>
+
+        <div class="formulario">
+
+            <input
+                type="text"
+                placeholder="Nombre *"
+            >
+
+            <input
+                type="email"
+                placeholder="Correo *"
+            >
+
+            <button class="enviar">
+                Enviar
+            </button>
 
         </div>
 
-    </div>
+    </section>
 
 </body>
 </html>
